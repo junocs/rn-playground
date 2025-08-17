@@ -16,7 +16,9 @@
     "*.js",
     ".*.js",
     "*.ts",
-    ".prettierrc.mjs"
+    ".prettierrc.mjs",
+    ".rnstorybook/**/*",
+    ".storybook/**/*"
   ],
-  "exclude": ["node_modules", "_", "android", "ios"]
+  "exclude": ["node_modules", "_", "android", "ios", ".rnstorybook/storybook.requires.ts"]
 }

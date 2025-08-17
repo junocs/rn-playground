@@ -21,7 +21,7 @@ export const queryClient = new QueryClient({
 
 export const storage = new MMKV()
 
-function App() {
+export function App() {
   return (
     <GestureHandlerRootView>
       <QueryClientProvider client={queryClient}>
@@ -30,7 +30,7 @@ function App() {
         </ThemeProvider>
       </QueryClientProvider>
     </GestureHandlerRootView>
-  );
+  )
 }
 
-export default App;
+export { default } from '../.rnstorybook'
