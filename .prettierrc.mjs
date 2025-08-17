@@ -1,3 +1,9 @@
 export default {
+  arrowParens: 'avoid',
+  bracketSameLine: false,
+  bracketSpacing: true,
+  semi: false,
   singleQuote: true,
-};
+  tabWidth: 2,
+  trailingComma: 'all',
+}

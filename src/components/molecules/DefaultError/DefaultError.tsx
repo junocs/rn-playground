@@ -1,19 +1,19 @@
-import { useErrorBoundary } from 'react-error-boundary';
-import { useTranslation } from 'react-i18next';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { useErrorBoundary } from 'react-error-boundary'
+import { useTranslation } from 'react-i18next'
+import { Text, TouchableOpacity, View } from 'react-native'
 
-import { useTheme } from '@/theme';
+import { useTheme } from '@/theme'
 
-import { IconByVariant } from '@/components/atoms';
+import { IconByVariant } from '@/components/atoms'
 
 type Properties = {
-  readonly onReset?: () => void;
-};
+  readonly onReset?: () => void
+}
 
 function DefaultErrorScreen({ onReset = undefined }: Properties) {
-  const { colors, fonts, gutters, layout } = useTheme();
-  const { t } = useTranslation();
-  const { resetBoundary } = useErrorBoundary();
+  const { colors, fonts, gutters, layout } = useTheme()
+  const { t } = useTranslation()
+  const { resetBoundary } = useErrorBoundary()
 
   return (
     <View
@@ -41,8 +41,8 @@ function DefaultErrorScreen({ onReset = undefined }: Properties) {
       {onReset ? (
         <TouchableOpacity
           onPress={() => {
-            resetBoundary();
-            onReset();
+            resetBoundary()
+            onReset()
           }}
         >
           <Text style={[fonts.gray800, fonts.size_16]}>
@@ -51,7 +51,7 @@ function DefaultErrorScreen({ onReset = undefined }: Properties) {
         </TouchableOpacity>
       ) : undefined}
     </View>
-  );
+  )
 }
 
-export default DefaultErrorScreen;
+export default DefaultErrorScreen

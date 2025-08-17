@@ -1,6 +1,6 @@
-import type { Backgrounds } from '@/theme/types/backgrounds';
-import type { UnionConfiguration } from '@/theme/types/config';
-import type { ViewStyle } from 'react-native';
+import type { Backgrounds } from '@/theme/types/backgrounds'
+import type { UnionConfiguration } from '@/theme/types/config'
+import type { ViewStyle } from 'react-native'
 
 /**
  * Generates background styles from configuration
@@ -14,11 +14,11 @@ export const generateBackgrounds = (configuration: UnionConfiguration) => {
         [key]: {
           backgroundColor: value,
         },
-      });
+      })
     },
     {} as Backgrounds,
-  );
-};
+  )
+}
 
 /**
  * Static background styles
@@ -27,4 +27,4 @@ export const generateBackgrounds = (configuration: UnionConfiguration) => {
 export const staticBackgroundStyles = {} as const satisfies Record<
   string,
   ViewStyle
->;
+>

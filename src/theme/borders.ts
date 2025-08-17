@@ -4,11 +4,11 @@ import type {
   BorderRadius,
   BorderTopRadius,
   BorderWidths,
-} from '@/theme/types/borders';
-import type { UnionConfiguration } from '@/theme/types/config';
-import type { ViewStyle } from 'react-native';
+} from '@/theme/types/borders'
+import type { UnionConfiguration } from '@/theme/types/config'
+import type { ViewStyle } from 'react-native'
 
-import { config } from '@/theme/_config';
+import { config } from '@/theme/_config'
 
 /**
  * Generates border color styles from configuration
@@ -23,9 +23,9 @@ export const generateBorderColors = (configuration: UnionConfiguration) => {
       [key]: {
         borderColor: value,
       },
-    });
-  }, {} as BorderColors);
-};
+    })
+  }, {} as BorderColors)
+}
 
 /**
  * Generates border radius styles from configuration
@@ -54,11 +54,11 @@ export const generateBorderRadius = () => {
         [`roundedTopLeft_${radius}`]: {
           borderTopLeftRadius: radius,
         },
-      });
+      })
     },
     {} as BorderBottomRadius & BorderRadius & BorderTopRadius,
-  );
-};
+  )
+}
 
 /**
  * Generates border width styles from configuration
@@ -82,9 +82,9 @@ export const generateBorderWidths = () => {
       [`wTop_${width}`]: {
         borderTopWidth: width,
       },
-    });
-  }, {} as BorderWidths);
-};
+    })
+  }, {} as BorderWidths)
+}
 
 /**
  * Static border styles
@@ -93,4 +93,4 @@ export const generateBorderWidths = () => {
 export const staticBorderStyles = {} as const satisfies Record<
   string,
   ViewStyle
->;
+>

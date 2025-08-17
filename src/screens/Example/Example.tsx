@@ -1,19 +1,19 @@
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Alert, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { Alert, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 
-import { useI18n, useUser } from '@/hooks';
-import { useTheme } from '@/theme';
+import { useI18n, useUser } from '@/hooks'
+import { useTheme } from '@/theme'
 
-import { AssetByVariant, IconByVariant, Skeleton } from '@/components/atoms';
-import { SafeScreen } from '@/components/templates';
+import { AssetByVariant, IconByVariant, Skeleton } from '@/components/atoms'
+import { SafeScreen } from '@/components/templates'
 
-const MAX_RANDOM_ID = 9;
+const MAX_RANDOM_ID = 9
 
 function Example() {
-  const { t } = useTranslation();
-  const { useFetchOneQuery } = useUser();
-  const { toggleLanguage } = useI18n();
+  const { t } = useTranslation()
+  const { useFetchOneQuery } = useUser()
+  const { toggleLanguage } = useI18n()
 
   const {
     backgrounds,
@@ -24,33 +24,33 @@ function Example() {
     gutters,
     layout,
     variant,
-  } = useTheme();
+  } = useTheme()
 
-  const [currentId, setCurrentId] = useState(-1);
+  const [currentId, setCurrentId] = useState(-1)
 
-  const fetchOneUserQuery = useFetchOneQuery(currentId);
+  const fetchOneUserQuery = useFetchOneQuery(currentId)
 
   useEffect(() => {
     if (fetchOneUserQuery.isSuccess) {
       Alert.alert(
         t('screen_example.hello_user', { name: fetchOneUserQuery.data.name }),
-      );
+      )
     }
-  }, [fetchOneUserQuery.isSuccess, fetchOneUserQuery.data, t]);
+  }, [fetchOneUserQuery.isSuccess, fetchOneUserQuery.data, t])
 
   const onChangeTheme = () => {
-    changeTheme(variant === 'default' ? 'dark' : 'default');
-  };
+    changeTheme(variant === 'default' ? 'dark' : 'default')
+  }
 
   const handleResetError = () => {
-    void fetchOneUserQuery.refetch();
-  };
+    void fetchOneUserQuery.refetch()
+  }
 
   return (
     <SafeScreen
       isError={fetchOneUserQuery.isError}
       onResetError={() => {
-        handleResetError();
+        handleResetError()
       }}
     >
       <ScrollView>
@@ -102,7 +102,7 @@ function Example() {
             >
               <TouchableOpacity
                 onPress={() => {
-                  setCurrentId(Math.ceil(Math.random() * MAX_RANDOM_ID + 1));
+                  setCurrentId(Math.ceil(Math.random() * MAX_RANDOM_ID + 1))
                 }}
                 style={[components.buttonCircle, gutters.marginBottom_16]}
                 testID="fetch-user-button"
@@ -130,7 +130,7 @@ function Example() {
         </View>
       </ScrollView>
     </SafeScreen>
-  );
+  )
 }
 
-export default Example;
+export default Example

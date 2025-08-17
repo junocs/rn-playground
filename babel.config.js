@@ -16,4 +16,4 @@ module.exports = {
     'react-native-worklets/plugin', // need to be the last plugin
   ],
   presets: ['module:@react-native/babel-preset'],
-};
+}

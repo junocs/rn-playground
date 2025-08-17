@@ -1,18 +1,20 @@
-import eslintConfigPrettier from 'eslint-config-prettier';
-import importPlugin from 'eslint-plugin-import';
-import jest from 'eslint-plugin-jest';
-import perfectionist from 'eslint-plugin-perfectionist';
-import react from 'eslint-plugin-react';
-import reactHooks from 'eslint-plugin-react-hooks';
-import reactRefresh from 'eslint-plugin-react-refresh';
-import testingLibrary from 'eslint-plugin-testing-library';
-import unicorn from 'eslint-plugin-unicorn';
+import eslintConfigPrettier from 'eslint-config-prettier'
+import importPlugin from 'eslint-plugin-import'
+import jest from 'eslint-plugin-jest'
+import perfectionist from 'eslint-plugin-perfectionist'
+import prettier from 'eslint-plugin-prettier'
+import react from 'eslint-plugin-react'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import storybook from 'eslint-plugin-storybook'
+import testingLibrary from 'eslint-plugin-testing-library'
+import unicorn from 'eslint-plugin-unicorn'
 
-const ERROR = 2;
-const OFF = 0;
+const ERROR = 2
+const OFF = 0
 
-import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import eslint from '@eslint/js'
+import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
   eslint.configs.recommended,
@@ -27,7 +29,26 @@ export default tseslint.config(
   react.configs.flat['jsx-runtime'],
   reactRefresh.configs.recommended,
   testingLibrary.configs['flat/react'],
-  eslintConfigPrettier, // last
+  eslintConfigPrettier,
+  {
+    plugins: {
+      prettier,
+    },
+    rules: {
+      'prettier/prettier': [
+        'error',
+        {
+          arrowParens: 'avoid',
+          bracketSameLine: false,
+          bracketSpacing: true,
+          semi: false,
+          singleQuote: true,
+          tabWidth: 2,
+          trailingComma: 'all',
+        },
+      ],
+    },
+  },
   {
     languageOptions: {
       globals: {
@@ -156,6 +177,11 @@ export default tseslint.config(
     },
   },
   {
-    ignores: ['plugins/**'],
+    ignores: [
+      'plugins/**',
+      '.rnstorybook/storybook.requires.ts',
+      './src/stories/**.*',
+    ],
   },
-);
+  storybook.configs['flat/recommended'],
+)

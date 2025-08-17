@@ -1,7 +1,7 @@
-import type { ComponentTheme } from '@/theme/types/theme';
-import type { ImageStyle, TextStyle, ViewStyle } from 'react-native';
+import type { ComponentTheme } from '@/theme/types/theme'
+import type { ImageStyle, TextStyle, ViewStyle } from 'react-native'
 
-type AllStyle = {} & Record<string, ImageStyle | TextStyle | ViewStyle>;
+type AllStyle = {} & Record<string, ImageStyle | TextStyle | ViewStyle>
 
 const generateComponentStyles = ({
   backgrounds,
@@ -23,7 +23,7 @@ const generateComponentStyles = ({
       height: 250,
       width: 250,
     },
-  } as const satisfies AllStyle;
-};
+  } as const satisfies AllStyle
+}
 
-export default generateComponentStyles;
+export default generateComponentStyles

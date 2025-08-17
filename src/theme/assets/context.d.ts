@@ -5,26 +5,26 @@
 // Separate file required until the types land in react-native itself:
 // https://github.com/facebook/react-native/pull/41421
 
-declare let module: NodeJS.NodeModule;
+declare let module: NodeJS.NodeModule
 
 declare namespace __MetroModuleApi {
   type RequireContext = {
     /** Return the keys that can be resolved. */
-    keys(): string[];
-    (id: string): unknown;
-    (id: string): unknown;
+    keys(): string[]
+    (id: string): unknown
+    (id: string): unknown
     /** **Unimplemented:** Readable identifier for the context module. */
-    id: string;
+    id: string
     /** **Unimplemented:** Return the module identifier for a user request. */
-    resolve(id: string): string;
-  };
+    resolve(id: string): string
+  }
 
   type RequireFunction = {
     /**
      * Returns the exports from a dependency. The call is sync. No request to the server is fired. The compiler ensures that the dependency is available.
      */
-    (path: string): unknown;
-    (path: string): unknown;
+    (path: string): unknown
+    (path: string): unknown
 
     /**
      * **Experimental:** Import all modules in a given directory. This module dynamically updates when the files in a directory are added or removed.
@@ -41,24 +41,24 @@ declare namespace __MetroModuleApi {
       recursive?: boolean,
       filter?: RegExp,
       mode?: 'eager' | 'lazy-once' | 'lazy' | 'sync' | 'weak',
-    ): RequireContext;
-  };
+    ): RequireContext
+  }
 }
 
 /**
  * Declare process variable
  */
 declare namespace NodeJS {
-  type Require = __MetroModuleApi.RequireFunction & {};
+  type Require = __MetroModuleApi.RequireFunction & {}
 }
-declare let process: NodeJS.Process;
+declare let process: NodeJS.Process
 
-declare module '*.png';
+declare module '*.png'
 
 declare module '*.svg' {
-  import type React from 'react';
-  import type { SvgProps } from 'react-native-svg';
+  import type React from 'react'
+  import type { SvgProps } from 'react-native-svg'
 
-  const content: React.FC<SvgProps>;
-  export default content;
+  const content: React.FC<SvgProps>
+  export default content
 }

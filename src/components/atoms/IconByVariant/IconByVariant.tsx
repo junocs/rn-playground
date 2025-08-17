@@ -1,19 +1,19 @@
-import type { ReactElement } from 'react';
-import type { SvgProps } from 'react-native-svg';
+import type { ReactElement } from 'react'
+import type { SvgProps } from 'react-native-svg'
 
-import { useMemo } from 'react';
-import * as z from 'zod';
+import { useMemo } from 'react'
+import * as z from 'zod'
 
-import { useTheme } from '@/theme';
-import getAssetsContext from '@/theme/assets/getAssetsContext';
+import { useTheme } from '@/theme'
+import getAssetsContext from '@/theme/assets/getAssetsContext'
 
 type Properties = {
-  readonly path: string;
-} & SvgProps;
+  readonly path: string
+} & SvgProps
 
-const icons = getAssetsContext('icons');
-const EXTENSION = 'svg';
-const SIZE = 24;
+const icons = getAssetsContext('icons')
+const EXTENSION = 'svg'
+const SIZE = 24
 
 function IconByVariant({
   height = SIZE,
@@ -21,9 +21,9 @@ function IconByVariant({
   width = SIZE,
   ...props
 }: Properties) {
-  const { variant } = useTheme();
+  const { variant } = useTheme()
 
-  const iconProperties = { ...props, height, width };
+  const iconProperties = { ...props, height, width }
   const Icon = useMemo(() => {
     try {
       const getDefaultSource = () =>
@@ -33,10 +33,10 @@ function IconByVariant({
               z.custom<ReactElement<SvgProps>>(),
             ),
           })
-          .parse(icons(`./${path}.${EXTENSION}`)).default;
+          .parse(icons(`./${path}.${EXTENSION}`)).default
 
       if (variant === 'default') {
-        return getDefaultSource();
+        return getDefaultSource()
       }
 
       try {
@@ -46,23 +46,23 @@ function IconByVariant({
               z.custom<ReactElement<SvgProps>>(),
             ),
           })
-          .parse(icons(`./${variant}/${path}.${EXTENSION}`));
+          .parse(icons(`./${variant}/${path}.${EXTENSION}`))
 
-        return fetchedModule.default;
+        return fetchedModule.default
       } catch (error) {
         console.warn(
           `Couldn't load the icon: ${path}.${EXTENSION} for the variant ${variant}, Fallback to default`,
           error,
-        );
-        return getDefaultSource();
+        )
+        return getDefaultSource()
       }
     } catch (error) {
-      console.error(`Couldn't load the icon: ${path}.${EXTENSION}`, error);
-      throw error;
+      console.error(`Couldn't load the icon: ${path}.${EXTENSION}`, error)
+      throw error
     }
-  }, [variant, path]);
+  }, [variant, path])
 
-  return <Icon {...iconProperties} />;
+  return <Icon {...iconProperties} />
 }
 
-export default IconByVariant;
+export default IconByVariant
